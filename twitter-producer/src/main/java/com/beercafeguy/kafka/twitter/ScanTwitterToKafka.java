@@ -24,7 +24,7 @@ public class ScanTwitterToKafka {
 	private static final String topic = "holi-tweets";
 
 	public static void main(String[] args) throws IOException {
-		Properties props=new ScanTwitterToKafka().getProperties("src/main/resources/kafka.producer.properties");
+		Properties props=new ScanTwitterToKafka().getProperties("src/main/resources/producer.properties");
 		String consumerKey=props.getProperty("consumer_key");
 		String consumerSecret=props.getProperty("consumer_secret");
 		String token=props.getProperty("access_token");

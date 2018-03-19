@@ -1,0 +1,9 @@
+.project
+avro-serialization.iml
+.idea
+.settings
+target
+.classpath
+customer-v2.avro
+AvroSchemaEvolution.iml
+customer-v1.avro

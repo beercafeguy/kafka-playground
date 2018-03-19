@@ -42,7 +42,6 @@ public class ForwardCompatibleDemo {
         final DatumReader<CustomerV1> datumReader=new SpecificDatumReader<CustomerV1>(CustomerV1.class);
         try(DataFileReader<CustomerV1> reader=new DataFileReader<CustomerV1>(file,datumReader)){
             while(reader.hasNext()) {
-
                 CustomerV1 customerV1=reader.next();
                 System.out.println("Customer V1"+customerV1+ " is successfully read from file.");
             }

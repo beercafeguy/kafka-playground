@@ -1,0 +1,36 @@
+Start kafka cluster using docker-compose
+
+in C:\Windows\System32\Drivers\etc\hosts or /etc/hosts file 
+
+127.0.0.1     kafka1
+127.0.0.1     kafka2
+127.0.0.1     kafka3
+127.0.0.1     zoo1
+127.0.0.1     zoo2
+127.0.0.1     zoo3
+127.0.0.1     kafka-schema-registry
+127.0.0.1     kafka-schema-registry-ui
+127.0.0.1     kafka-rest-proxy
+127.0.0.1     kafka-topics-ui
+127.0.0.1     kafka-connect-ui
+127.0.0.1     zoonavigator-web
+127.0.0.1     zoonavigator-api
+
+
+
+docker-compose up
+
+docker run -it -rm --net=host confluentinc/cp-schema-registry:3.3.1 bash
+
+
+netstat -ano | findstr 8081
+
+Taskkill /PID 2860 /F
+
+
+using docker compose
+docker-compose up
+
+using docker run
+docker run -d -p 2181:2181 -p 3030:3030 -p 8081-8083:8081-8083 -p 9581-9585:9581-9585 -p 9092:9092 -e ADV_HOST=127.0.0.1 -e RUNNING_SAMPLEDATA=0 landoop/fast-data-dev
+

@@ -1,0 +1,15 @@
+{
+	"name" : "Customer",
+	"type" : "record",
+	"namespace" : "com.beercafeguy",
+	"doc" : "Customer avro schema",
+	"fields" : [
+		{ "name" : "first_name", "type" : "string" },
+		{ "name" : "middle_name", "type" : ["null","string"], "default":null },
+		{ "name" : "last_name", "type" : "string" },
+		{ "name" : "age", "type" : "int" },
+		{ "name" : "height", "type" : "float", "doc" : "height is fts" },
+		{ "name" : "weight", "type" : "double", "doc" : "weight in kgs" },
+		{ "name" : "auto_email_turned_on", "type" : "boolean" ,"default" : true, "doc" : "True if automatic emails are turned on" }	
+	]
+}

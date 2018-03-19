@@ -1,0 +1,34 @@
+[
+{
+	"name" : "CustomerAddress",
+	"type" : "record",
+	"namespace" : "com.beercafeguy",
+	"doc" : "Customer Address avro schema",
+	"fields" : [
+		{ "name" : "address", "type" : "string" },
+		{ "name" : "postal_code", "type" : ["int","string"]},
+		{ "name" : "city", "type" : "string" },
+		{ "name" : "address_type", "type" : "enum", "symbols" : ["Home","Office","CoffeeShop"] }
+	]
+},
+{
+	"name" : "Customer",
+	"type" : "record",
+	"namespace" : "com.beercafeguy",
+	"doc" : "Customer avro schema",
+	"fields" : [
+		{ "name" : "first_name", "type" : "string" },
+		{ "name" : "middle_name", "type" : ["null","string"], "default":null },
+		{ "name" : "last_name", "type" : "string" },
+		{ "name" : "age", "type" : "int" },
+		{ "name" : "height", "type" : "float", "doc" : "height is fts" },
+		{ "name" : "weight", "type" : "double", "doc" : "weight in kgs" },
+		{ "name" : "auto_email_turned_on", "type" : "boolean" ,"default" : true, "doc" : "True if automatic emails are turned on" },
+		{ "name" : "customer_status", "type" : "enum", "symbols" : ["Bronze","Silver","Gold"] },
+		{ "name" : "customer_emails", "type" : "array", "items" : "string", "default" : []},
+		{ "name" : "questions", "type" : "map", "items" : "string" },
+		{ "name" : "signup_ts", "type" : "long", "logicalType" : "timestamp-millis", "doc" : "timestamp in mil seconds" },
+		{ "name" : "address", "type" : "com.beercafeguy.CustomerAddress"}		
+	]
+}
+]

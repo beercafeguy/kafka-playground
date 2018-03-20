@@ -7,3 +7,5 @@ target
 customer-v2.avro
 AvroSchemaEvolution.iml
 customer-v1.avro
+ConfluentRestProxy.iml
+KafkaRestProxyProducer.iml

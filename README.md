@@ -5,7 +5,6 @@ Code snips for Kafka
 * Old producer and consumer API (before kafka 0.8) was using ZK to store offset. The new API uses Kafka to store Offset.
 
 #### Common commands 
-<br>
 ##### List Topics
 `kafka-topics.sh --list --zookeeper kafka1.host.beercafeguy.com:2181,kafka2.host.beercafeguy.com:2181,kafka3.host.beercafeguy.com:2181`
 <br>
@@ -16,10 +15,8 @@ Code snips for Kafka
 
 ##### Delete Topic (This will only work if delete.topic.enable is set to true)
 `kafka-topics.sh --delete --topic user_clicks --zookeeper kafka1.host.beercafeguy.com:2181,kafka2.host.beercafeguy.com:2181,kafka3.host.beercafeguy.com:2181`
-<br>
 
 ##### Produce messages from console
-<br>
 `kafka-console-producer.sh --topic seller_survey --broker-list kafka1.host.beercafeguy.com:9092,kafka2.host.beercafeguy.com:9092,kafka3.host.beercafeguy.com:9092`
 <br>
 ##### Consume message using console consumer

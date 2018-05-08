@@ -20,6 +20,5 @@ Code snips for Kafka
 `kafka-console-producer.sh --topic seller_survey --broker-list kafka1.host.beercafeguy.com:9092,kafka2.host.beercafeguy.com:9092,kafka3.host.beercafeguy.com:9092`
 <br>
 ##### Consume message using console consumer
-<br>
 `kafka-console-consumer.sh --topic seller_survey --from-beginning --bootstrap-server kafka1.host.beercafeguy.com:9092,kafka2.host.beercafeguy.com:9092,kafka3.host.beercafeguy.com:9092`
 <br>

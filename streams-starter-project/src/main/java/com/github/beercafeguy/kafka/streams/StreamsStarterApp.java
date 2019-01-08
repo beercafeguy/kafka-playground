@@ -35,9 +35,10 @@ public class StreamsStarterApp {
         //        "word-count-input1");
 
         KStream<String, String> wcInputStream = builder.stream("word-count-input1");
+        KStream<String,String> sourceStream=wcInputStream.peek((key,value)->logger.info("Key -> "+key+" | Value -> "+value));
 
         //2. Operate
-        KTable<String, Long> wordsCount = wcInputStream
+        KTable<String, Long> wordsCount = sourceStream
                 .mapValues(value -> value.toLowerCase()) //Map values to lower case
                 .flatMapValues(value -> Arrays.asList(value.split(" "))) //split values for form stream of words
                 .selectKey((key, value) -> value) //replace key with value

@@ -29,6 +29,11 @@ public class StreamsStarterApp {
         KStreamBuilder builder = new KStreamBuilder();
 
         //1. Stream from Kafka
+        //KStream<String, String> stringStream = builder.stream(
+        //        Serdes.String(),
+        //        Serdes.String(),
+        //        "word-count-input1");
+
         KStream<String, String> wcInputStream = builder.stream("word-count-input1");
 
         //2. Operate

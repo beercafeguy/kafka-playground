@@ -26,6 +26,7 @@ public class FavColorApp {
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        config.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG,StreamsConfig.EXACTLY_ONCE); // guaranty for exactly once
 
         config.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG,"0");
 
@@ -37,9 +38,12 @@ public class FavColorApp {
                         Serdes.String(),
                         Serdes.String(),
                         "user-color-uses");
+
+        KStream<String,String> sourceStream=userColorStream.peek((key,value)->logger.info("Key -> "+key+" | Value -> "+value));
+
         String[] colorArray={"RED","BLUE","GREEN"};
         List<String> colors= Arrays.asList(colorArray);
-        userColorStream
+        KStream<String,String> nameColorStream=sourceStream
                 .filter(
                         (key,value) ->
                                 value.contains(",")
@@ -47,7 +51,7 @@ public class FavColorApp {
                                 && colors.contains(value.split(" ")[1]) )
                 .selectKey((key,value) -> value.split(",")[0].toLowerCase()) //will trigger a repar
                 .mapValues(value -> value.split(" ")[1].toLowerCase());
-        userColorStream.to(Serdes.String(),Serdes.String(),"color-count-compact-tmp");
+        nameColorStream.to(Serdes.String(),Serdes.String(),"color-count-compact-tmp");
 
         KTable<String, String> colorCountTable = builder.table(
                 Serdes.String(),

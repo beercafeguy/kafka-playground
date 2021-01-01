@@ -22,3 +22,20 @@ Code snips for Kafka
 ##### Consume message using console consumer
 `kafka-console-consumer.sh --topic seller_survey --from-beginning --bootstrap-server kafka1.host.beercafeguy.com:9092,kafka2.host.beercafeguy.com:9092,kafka3.host.beercafeguy.com:9092`
 <br>
+
+
+# Kafka in local machine 
+
+#### List topics
+`kafka-topics.bat --bootstrap-server localhost:9092 --list`
+
+#### Create a topic 
+`kafka-topics.bat --bootstrap-server localhost:9092 --topic truck_locations --create`
+
+#### Create a topic with given replication
+`kafka-topics.bat --bootstrap-server localhost:9092 --topic truck_locations_rep --replication-factor 1 --partitions 3 --create`
+##### Note: 
+* Replication factor can never be more then available number of brokers as one broker can not host more then 1 replica of any given partition 
+
+#### Describe a topic
+`kafka-topics.bat --bootstrap-server localhost:9092 --topic truck_locations --describe`

@@ -39,3 +39,16 @@ Code snips for Kafka
 
 #### Describe a topic
 `kafka-topics.bat --bootstrap-server localhost:9092 --topic truck_locations --describe`
+
+
+#### Produce message in console producer
+`kafka-console-producer.bat --bootstrap-server localhost:9092 --topic truck_locations_rep`
+
+#### Produce message in console producer to a non existing topic
+`kafka-console-producer.bat --bootstrap-server localhost:9092 --topic truck_locations_rep_ne`
+#### Console Consumer
+`kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic truck_locations_rep --from-beginning`
+
+#### Same consumer group consuming from same topic  
+`kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic truck_locations_rep --from-beginning --group analytics_grp`
+`kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic truck_locations_rep --from-beginning --group analytics_grp`
